@@ -36,7 +36,9 @@ function calculateValue(input1, input2, result, type) {
 
   getById(
     result
-  ).innerHTML = `<span class="flex single-value"><h3 class="mx-1">${count}.${type} ${calculateValue}cm <sup>2</sup></h3><button class="text-1xl
+  ).innerHTML = `<span class="flex single-value"><h3 class="mx-1">${count}.${type} ${calculateValue.toFixed(
+    2
+  )}cm <sup>2</sup></h3><button class="text-1xl
    text-white bg-blue-500 px-2 ml-4 rounded-md hover:bg-pink-700">Convert to m<sup>2</sup></button></span>`;
 }
 // Add event listener function
@@ -68,25 +70,38 @@ eventListener(
   "parallelogram-height",
   "p-value",
   "Parallelogram"
-); 
+);
 eventListener(
   "btn-Rhombus",
   "Rhombus-base",
   "Rhombus-height",
   "re-value",
   "Rhombus"
-); 
+);
 eventListener(
   "btn-Pentagon",
   "Pentagon-base",
   "Pentagon-height",
   "pe-value",
   "Pentagon"
-); 
+);
 eventListener(
   "btn-Ellipse",
   "Ellipse-base",
   "Ellipse-height",
   "e-value",
   "Ellipse"
-); 
+);
+
+// random color
+function addHoverEffect(divs) {
+  for (let i = 0; i < divs.length; i++) {
+    divs[i].addEventListener("mouseover", function(event) {
+      const randomColor = Math.floor(Math.random()*16777215).toString(16);
+      event.target.style.backgroundColor = "#" + randomColor; 
+    });
+  }
+}
+
+const hoverDivs = document.getElementsByClassName("hover-div");
+addHoverEffect(hoverDivs);
